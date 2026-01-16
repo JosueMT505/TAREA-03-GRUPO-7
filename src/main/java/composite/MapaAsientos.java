@@ -30,7 +30,7 @@ public class MapaAsientos {
     private void agregarAsientosSeccion(SeccionTeatro seccion, String fila, int cantidad, double precio) {
         for (int i = 1; i <= cantidad; i++) {
             String id = seccion.getNombre() + "-" + fila + "-" + i;
-            AsientoIndividual asiento = new AsientoIndividual(id, seccion.getNombre(), fila, i, precio);
+            AsientoIndividual asiento = new AsientoIndividual(id, new Ubicacion(seccion,fila,i), precio);
             seccion.agregarAsiento(asiento);
         }
     }

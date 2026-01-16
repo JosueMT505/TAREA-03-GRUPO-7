@@ -5,15 +5,28 @@ import composite.*;
 import java.util.*;
 
 public class Main {
+
     public static void main(String[] args) {
-       
+        SistemaEnVivoTickets sistema = configurarSistema();
+        Usuario usuario = crearUsuarioDemo();
+        Evento evento = crearEventoDemo(sistema);
+
+        simularFlujoCompra(sistema, usuario, evento);
+    }
+
+    private static SistemaEnVivoTickets configurarSistema() {
         SistemaEnVivoTickets sistema = new SistemaEnVivoTickets();
         sistema.iniciarSistema();
+        return sistema;
+    }
 
-       
+    private static Usuario crearUsuarioDemo() {
         Usuario usuario = new Usuario("U001", "Juan Pérez", "juan@email.com", "0999999999");
-        usuario.agregarPreferencia("cancelación");
+        usuario.agregarPreferencia("conciertos");
+        return usuario;
+    }
 
+<<<<<<< Updated upstream
         
         GestorEventos gestorEventos = sistema.getGestorEventos();
         DatosEvento datosEvento = new DatosEvento(
@@ -21,9 +34,17 @@ public class Main {
                 new Date(),
                 "Obra clásica de Shakespeare"
         );
+=======
+    private static Evento crearEventoDemo(SistemaEnVivoTickets sistema) {
+        Map<String, Object> datos = new HashMap<>();
+        datos.put("titulo", "Hamlet");
+        datos.put("descripcion", "Obra clásica");
+>>>>>>> Stashed changes
 
-        Evento evento = gestorEventos.crearNuevoEvento("obra_teatro", datosEvento);
+        return sistema.getGestorEventos().crearNuevoEvento("obra_teatro", datos);
+    }
 
+<<<<<<< Updated upstream
 
       
         FuncionEvento funcion = new FuncionEvento("F001", new Date(), evento);
@@ -47,5 +68,11 @@ public class Main {
        
 
         System.out.println("\nSistema probado exitosamente!");
+=======
+    private static void simularFlujoCompra(SistemaEnVivoTickets sistema, Usuario usuario, Evento evento) {
+        List<String> asientos = Arrays.asList("Platea-A-1", "Platea-A-2");
+        System.out.println("Iniciando simulación de compra...");
+        sistema.procesarCompra(usuario, evento.getId(), asientos);
+>>>>>>> Stashed changes
     }
 }

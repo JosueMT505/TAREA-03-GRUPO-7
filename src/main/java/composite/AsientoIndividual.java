@@ -28,7 +28,7 @@ public class AsientoIndividual implements ComponenteAsiento {
     }
 
     
-    public String getSeccion() { return ubicacion.seccion(); }
+    public SeccionTeatro getSeccion() { return ubicacion.seccion(); }
     public String getFila() { return ubicacion.fila(); }
     public int getNumero() { return ubicacion.numero(); }
 
