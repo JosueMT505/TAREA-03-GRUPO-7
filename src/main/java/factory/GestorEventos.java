@@ -21,34 +21,31 @@ public class GestorEventos {
 
     public Evento crearNuevoEvento(String tipo, DatosEvento datos) {
         CreadorEvento creador = creadores.get(tipo);
+
         if (creador == null) {
             System.out.println("Tipo de evento no soportado: " + tipo);
             return null;
         }
 
-        Evento evento = creador.crearEvento(
-<<<<<<< HEAD
-                datos.getTitulo(),
-                datos.getFecha()
-=======
-                (String) datos.get("titulo")
->>>>>>> 33328da1dc5e98798cd5daa6e220fcb7332efd38
-        );
+        // REFACTOR CASO 3: Eliminamos el envío de 'fecha' y el tercer parámetro repetido
+        // Ahora la firma es limpia y solo pasa lo necesario.
+        Evento evento = creador.crearEvento(datos.getTitulo());
 
+        // Configuramos los demás datos que vienen en el objeto contenedor
         evento.setDescripcion(datos.getDescripcion());
 
         creador.configurarEvento(evento);
         eventosActivos.add(evento);
 
-        System.out.println("Evento creado: " + evento.getTitulo());
+        System.out.println("Evento creado exitosamente: " + evento.getTitulo());
         return evento;
     }
-
 
     public List<Evento> buscarEventosPorTipo(String tipo) {
         List<Evento> resultado = new ArrayList<>();
         for (Evento evento : eventosActivos) {
-            if (evento.getClass().getSimpleName().toLowerCase().contains(tipo.toLowerCase())) {
+            // Una forma más segura de comparar tipos
+            if (evento.getClass().getSimpleName().equalsIgnoreCase(tipo)) {
                 resultado.add(evento);
             }
         }
