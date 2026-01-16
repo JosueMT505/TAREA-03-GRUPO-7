@@ -23,18 +23,20 @@ public class GestorReservas implements Observador {
 
     public void liberarReservasPorCancelacion(String eventoId) {
         List<Ticket> reservasALiberar = new ArrayList<>();
-
+    
         for (Ticket ticket : reservasActivas.values()) {
-            if (ticket.getEvento().getId().equals(eventoId)) {
+            
+            if (ticket.perteneceAlEvento(eventoId)) {
                 reservasALiberar.add(ticket);
             }
         }
-
+    
         for (Ticket ticket : reservasALiberar) {
             ticket.cancelar();
             reservasActivas.remove(ticket.getId());
             System.out.println("Reserva liberada: " + ticket.getId());
         }
+    
     }
 
     public void ofrecerAlternativas(Usuario usuario, Evento eventoOriginal) {

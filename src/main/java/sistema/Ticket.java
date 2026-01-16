@@ -36,6 +36,10 @@ public class Ticket {
     public boolean esExpirado() {
         return new Date().after(fechaExpiracionReserva) && estado == EstadoTicket.RESERVADO;
     }
+    
+    public boolean perteneceAlEvento(String eventoId) {
+        return this.evento != null && this.evento.getId().equals(eventoId);
+    }
 
     public String getId() { return id; }
     public EstadoTicket getEstado() { return estado; }
