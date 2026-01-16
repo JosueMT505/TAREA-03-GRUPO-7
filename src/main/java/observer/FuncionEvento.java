@@ -18,7 +18,13 @@ public class FuncionEvento implements Sujeto {
         this.evento = evento;
         this.estado = EstadoFuncion.PROGRAMADO;
         this.observadores = new ArrayList<>();
+      
         this.mapaAsientos = new MapaAsientos(this);
+    }
+
+   
+    public String getNombreEvento() {
+        return (evento != null) ? evento.getTitulo() : "Evento sin título";
     }
 
     public void cambiarFecha(Date nuevaFecha) {
@@ -49,7 +55,8 @@ public class FuncionEvento implements Sujeto {
 
     @Override
     public void notificarObservadores() {
-        notificarObservadores("Cambio en la función: " + evento.getTitulo());
+        
+        notificarObservadores("Cambio en la función: " + getNombreEvento());
     }
 
     public void notificarObservadores(String mensaje) {
@@ -59,6 +66,7 @@ public class FuncionEvento implements Sujeto {
         }
     }
 
+    
     public String getId() { return id; }
     public Date getFechaHora() { return fechaHora; }
     public Evento getEvento() { return evento; }
