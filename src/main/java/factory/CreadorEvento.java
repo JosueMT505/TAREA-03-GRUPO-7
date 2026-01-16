@@ -5,7 +5,7 @@ import java.util.Date;
 public abstract class CreadorEvento {
     protected abstract Evento metodoFabrica();
 
-    public Evento crearEvento(String titulo, Date fecha) {
+    public Evento crearEvento(String titulo) {
         Evento evento = metodoFabrica();
         evento.setTitulo(titulo);
         return evento;
