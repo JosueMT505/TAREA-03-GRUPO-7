@@ -12,7 +12,7 @@ public class FactoryMethodTest {
     void creadorObraTeatro_debeCrearYConfigurar() {
         CreadorEvento creador = new CreadorObraTeatro();
 
-        Evento e = creador.crearEvento("Hamlet", new Date());
+        Evento e = creador.crearEvento("Hamlet");
         creador.configurarEvento(e);
 
         assertNotNull(e);
@@ -28,7 +28,7 @@ public class FactoryMethodTest {
     void creadorMicroteatro_debeCrearYConfigurar() {
         CreadorEvento creador = new CreadorMicroteatro();
 
-        Evento e = creador.crearEvento("Micro", new Date());
+        Evento e = creador.crearEvento("Micro");
 
         assertNotNull(e);
         assertTrue(e instanceof Microteatro);
@@ -44,7 +44,7 @@ public class FactoryMethodTest {
     void creadorConcierto_debeCrearYConfigurar() {
         CreadorEvento creador = new CreadorConcierto();
 
-        Evento e = creador.crearEvento("RockFest", new Date());
+        Evento e = creador.crearEvento("RockFest");
 
         assertNotNull(e);
         assertTrue(e instanceof Concierto);
@@ -60,7 +60,7 @@ public class FactoryMethodTest {
     void creadorStandUp_debeCrearYConfigurar() {
         CreadorEvento creador = new CreadorStandUp();
 
-        Evento e = creador.crearEvento("Risas", new Date());
+        Evento e = creador.crearEvento("Risas");
 
         assertNotNull(e);
         assertTrue(e instanceof StandUp);

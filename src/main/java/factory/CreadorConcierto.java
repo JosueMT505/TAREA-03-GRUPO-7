@@ -15,8 +15,8 @@ public class CreadorConcierto extends CreadorEvento {
     }
 
     @Override
-    public Evento crearEvento(String titulo, Date fecha) {
-        Evento evento = super.crearEvento(titulo, fecha);
+    public Evento crearEvento(String titulo) {
+        Evento evento = super.crearEvento(titulo);
         configurarEvento(evento);
         return evento;
     }

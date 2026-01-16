@@ -27,8 +27,7 @@ public class GestorEventos {
         }
 
         Evento evento = creador.crearEvento(
-                (String) datos.get("titulo"),
-                (Date) datos.get("fecha")
+                (String) datos.get("titulo")
         );
 
         evento.setDescripcion((String) datos.get("descripcion"));
