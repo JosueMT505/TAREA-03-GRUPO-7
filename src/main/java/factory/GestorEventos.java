@@ -3,8 +3,8 @@ package factory;
 import java.util.*;
 
 public class GestorEventos {
-    private Map<String, CreadorEvento> creadores;
-    private List<Evento> eventosActivos;
+    private final Map<String, CreadorEvento> creadores;
+    private final List<Evento> eventosActivos;
 
     public GestorEventos() {
         this.creadores = new HashMap<>();
@@ -31,7 +31,6 @@ public class GestorEventos {
                 (Date) datos.get("fecha")
         );
 
-        evento.setId(UUID.randomUUID().toString());
         evento.setDescripcion((String) datos.get("descripcion"));
 
         creador.configurarEvento(evento);

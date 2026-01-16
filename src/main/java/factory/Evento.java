@@ -12,7 +12,6 @@ public interface Evento {
     void agregarFuncion(FuncionEvento funcion);
     List<FuncionEvento> obtenerFuncionesDisponibles();
 
-    void setId(String id);
     void setTitulo(String titulo);
     void setDescripcion(String descripcion);
 }
