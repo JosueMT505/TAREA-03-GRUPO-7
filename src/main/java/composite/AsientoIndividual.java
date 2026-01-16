@@ -5,23 +5,34 @@ import java.util.Date;
 
 public class AsientoIndividual implements ComponenteAsiento {
     private String id;
-    private String seccion;
-    private String fila;
-    private int numero;
     private double precio;
     private EstadoAsiento estado;
     private Usuario usuarioReserva;
     private Date tiempoReserva;
+    
+   
+    private Ubicacion ubicacion; 
 
-    public AsientoIndividual(String id, String seccion, String fila, int numero, double precio) {
+   
+    public AsientoIndividual(String id, Ubicacion ubicacion, double precio) {
         this.id = id;
-        this.seccion = seccion;
-        this.fila = fila;
-        this.numero = numero;
+        this.ubicacion = ubicacion;
         this.precio = precio;
         this.estado = EstadoAsiento.LIBRE;
     }
 
+   
+    @Override
+    public String getUbicacion() {
+        return ubicacion.seccion() + " - Fila " + ubicacion.fila() + " - Asiento " + ubicacion.numero();
+    }
+
+    
+    public String getSeccion() { return ubicacion.seccion(); }
+    public String getFila() { return ubicacion.fila(); }
+    public int getNumero() { return ubicacion.numero(); }
+
+   
     @Override
     public boolean reservar(Usuario usuario) {
         if (esDisponible()) {
@@ -42,22 +53,10 @@ public class AsientoIndividual implements ComponenteAsiento {
         System.out.println("Asiento " + id + " liberado");
     }
 
-    @Override
-    public boolean esDisponible() {
-        return estado == EstadoAsiento.LIBRE;
-    }
-
-    @Override
-    public String getUbicacion() {
-        return seccion + " - Fila " + fila + " - Asiento " + numero;
-    }
-
+    @Override public boolean esDisponible() { return estado == EstadoAsiento.LIBRE; }
     @Override public String getId() { return id; }
     @Override public double getPrecio() { return precio; }
     @Override public EstadoAsiento getEstado() { return estado; }
-    public String getSeccion() { return seccion; }
-    public String getFila() { return fila; }
-    public int getNumero() { return numero; }
     public Usuario getUsuarioReserva() { return usuarioReserva; }
     public Date getTiempoReserva() { return tiempoReserva; }
 }
