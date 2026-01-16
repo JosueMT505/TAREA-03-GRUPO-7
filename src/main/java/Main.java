@@ -16,12 +16,14 @@ public class Main {
 
         
         GestorEventos gestorEventos = sistema.getGestorEventos();
-        Map<String, Object> datosEvento = new HashMap<>();
-        datosEvento.put("titulo", "Hamlet");
-        datosEvento.put("fecha", new Date());
-        datosEvento.put("descripcion", "Obra clásica de Shakespeare");
+        DatosEvento datosEvento = new DatosEvento(
+                "Hamlet",
+                new Date(),
+                "Obra clásica de Shakespeare"
+        );
 
         Evento evento = gestorEventos.crearNuevoEvento("obra_teatro", datosEvento);
+
 
       
         FuncionEvento funcion = new FuncionEvento("F001", new Date(), evento);

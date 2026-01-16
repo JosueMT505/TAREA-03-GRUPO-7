@@ -19,7 +19,7 @@ public class GestorEventos {
         creadores.put("concierto", new CreadorConcierto());
     }
 
-    public Evento crearNuevoEvento(String tipo, Map<String, Object> datos) {
+    public Evento crearNuevoEvento(String tipo, DatosEvento datos) {
         CreadorEvento creador = creadores.get(tipo);
         if (creador == null) {
             System.out.println("Tipo de evento no soportado: " + tipo);
@@ -27,11 +27,11 @@ public class GestorEventos {
         }
 
         Evento evento = creador.crearEvento(
-                (String) datos.get("titulo"),
-                (Date) datos.get("fecha")
+                datos.getTitulo(),
+                datos.getFecha()
         );
 
-        evento.setDescripcion((String) datos.get("descripcion"));
+        evento.setDescripcion(datos.getDescripcion());
 
         creador.configurarEvento(evento);
         eventosActivos.add(evento);
@@ -39,6 +39,7 @@ public class GestorEventos {
         System.out.println("Evento creado: " + evento.getTitulo());
         return evento;
     }
+
 
     public List<Evento> buscarEventosPorTipo(String tipo) {
         List<Evento> resultado = new ArrayList<>();
