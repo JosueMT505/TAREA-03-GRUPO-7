@@ -27,6 +27,7 @@ public class Main {
     }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         
         GestorEventos gestorEventos = sistema.getGestorEventos();
         DatosEvento datosEvento = new DatosEvento(
@@ -35,10 +36,13 @@ public class Main {
                 "Obra clásica de Shakespeare"
         );
 =======
+=======
+>>>>>>> Stashed changes
     private static Evento crearEventoDemo(SistemaEnVivoTickets sistema) {
         Map<String, Object> datos = new HashMap<>();
         datos.put("titulo", "Hamlet");
         datos.put("descripcion", "Obra clásica");
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 
         return sistema.getGestorEventos().crearNuevoEvento("obra_teatro", datos);
@@ -69,10 +73,19 @@ public class Main {
 
         System.out.println("\nSistema probado exitosamente!");
 =======
+=======
+
+        return sistema.getGestorEventos().crearNuevoEvento("obra_teatro", datos);
+    }
+
+>>>>>>> Stashed changes
     private static void simularFlujoCompra(SistemaEnVivoTickets sistema, Usuario usuario, Evento evento) {
         List<String> asientos = Arrays.asList("Platea-A-1", "Platea-A-2");
         System.out.println("Iniciando simulación de compra...");
         sistema.procesarCompra(usuario, evento.getId(), asientos);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
 }
